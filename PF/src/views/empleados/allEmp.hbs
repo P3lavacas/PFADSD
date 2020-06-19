@@ -1,0 +1,32 @@
+<div class="row">
+  {{#each empleados}}
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title d-flex justify-content-between align-item-center">
+          {{ nombre }} <a href="/empleados/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+        </h4>
+        <p><b>Telefono:</b></p>
+        <p>{{ description }}</p>
+        <p><b>Correo:</b></p>
+        <p>{{ correo }}</p>
+        <p><b>Direccion:</b></p>
+        <p>{{ direccion }}</p>
+      <form action="/empleados/delete/{{_id}}?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger btn-sm" type="submit">
+          Eliminar
+        </button>
+      </form>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="card mx-auto">
+    <div class="card-body">
+      <p class="lead"> Aun no hay empleados registrados</p>
+      <a href="/empleados/add" class="btn btn-success btn-block"> Registrar Empleado </a>
+    </div>
+  </div>
+  {{/each}}
+</div>
